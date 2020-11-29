@@ -23,24 +23,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private fun showTimePickerDialog() {
         val timePickerDialog = TimePickerDialog(
             this,
-            TimePickerDialog.OnTimeSetListener {view, hour, minute ->
+            TimePickerDialog.OnTimeSetListener { view, hour, minute ->
                 Log.d("UI_PARTS", "$hour:$minute")
+                if (2 <= hour && hour < 10) {
+                    textView.text = "おはよう"
+                } else if (10 <= hour && hour < 18) {
+                    textView.text = "こんにちは"
+                } else {
+                    textView.text = "こんばんは"
+                }
             },
             13, 0, true)
         timePickerDialog.show()
-        
-        if (2<= hour < 10) {
-            textView.text ="おはよう"
-        } else if (10<= hour < 18) {
-            textView.text ="こんにちは"
-        } else {
-            textView.text ="こんばんは"
     }
-
     }
-
-
-
-
-
-}
